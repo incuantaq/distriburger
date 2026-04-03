@@ -1,0 +1,111 @@
+---
+import content from '../data/content.json';
+
+const { product } = content;
+---
+
+<section class="product" id="catalogo">
+  <div class="product__bg"></div>
+  <div class="container product__inner">
+    <div class="product__image-wrap">
+      <img
+        src={product.image}
+        alt={product.imageAlt}
+        class="product__image"
+        loading="lazy"
+      />
+    </div>
+
+    <div class="product__content">
+      <h2 class="product__title">
+        {product.title}
+        <br />
+        <span class="product__title-highlight">{product.titleHighlight}</span>
+      </h2>
+      <p class="product__desc">{product.description}</p>
+      <a href={product.cta.href} class="btn-primary">{product.cta.text}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .product {
+    position: relative;
+    padding: 90px 0;
+    overflow: hidden;
+  }
+
+  .product__bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(200, 100, 20, 0.08) 0%, transparent 60%),
+                var(--color-bg);
+    z-index: 0;
+  }
+
+  .product__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  .product__image-wrap {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .product__image {
+    width: 100%;
+    max-width: 460px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(200, 148, 58, 0.1);
+  }
+
+  .product__content {
+    flex: 1;
+    max-width: 460px;
+  }
+
+  .product__title {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 700;
+    color: var(--color-white);
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .product__title-highlight {
+    color: var(--color-gold);
+    font-weight: 800;
+  }
+
+  .product__desc {
+    font-size: 1rem;
+    color: var(--color-text);
+    line-height: 1.75;
+    margin-bottom: 36px;
+  }
+
+  @media (max-width: 768px) {
+    .product__inner {
+      flex-direction: column;
+      gap: 40px;
+      text-align: center;
+    }
+
+    .product__content {
+      max-width: 100%;
+    }
+
+    .product__image {
+      max-width: 340px;
+    }
+  }
+</style>

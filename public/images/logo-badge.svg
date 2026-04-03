@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8B1A1A"/>
+      <stop offset="100%" stop-color="#4A0E0E"/>
+    </radialGradient>
+    <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#CC1111"/>
+      <stop offset="50%" stop-color="#EE2222"/>
+      <stop offset="100%" stop-color="#CC1111"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AA5A"/>
+      <stop offset="100%" stop-color="#A07830"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer circle -->
+  <circle cx="100" cy="100" r="96" fill="url(#bgGrad)" stroke="url(#goldGrad)" stroke-width="4"/>
+  <circle cx="100" cy="100" r="88" fill="none" stroke="rgba(212,170,90,0.5)" stroke-width="1.5"/>
+
+  <!-- Cow face placeholder -->
+  <circle cx="100" cy="70" r="32" fill="#D4AA5A"/>
+  <circle cx="88" cy="62" r="5" fill="#5A3010"/>
+  <circle cx="112" cy="62" r="5" fill="#5A3010"/>
+  <ellipse cx="100" cy="76" rx="14" ry="10" fill="#C89040"/>
+  <circle cx="96" cy="76" r="2.5" fill="#5A3010"/>
+  <circle cx="104" cy="76" r="2.5" fill="#5A3010"/>
+  <!-- Horns -->
+  <path d="M74 52 Q68 38 76 34 Q80 42 82 50" fill="#8B6020"/>
+  <path d="M126 52 Q132 38 124 34 Q120 42 118 50" fill="#8B6020"/>
+
+  <!-- Red ribbon banner -->
+  <path d="M30 118 L170 118 L160 132 L170 146 L30 146 L40 132 Z" fill="url(#ribbonGrad)"/>
+
+  <!-- DistriBurguer text on ribbon -->
+  <text x="100" y="137" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="13" font-weight="900" fill="white" letter-spacing="0.5">DistriBurguer</text>
+
+  <!-- Bottom arc text -->
+  <path id="bottomArc" d="M 30 155 A 75 75 0 0 0 170 155" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="8" fill="url(#goldGrad)" letter-spacing="0.3">
+    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">Distribuidora de Carne de Hamburguesas</textPath>
+  </text>
+
+  <!-- Stars -->
+  <text x="40" y="115" font-size="10" fill="#D4AA5A">★</text>
+  <text x="154" y="115" font-size="10" fill="#D4AA5A">★</text>
+
+  <!-- Top arc text -->
+  <path id="topArc" d="M 30 90 A 72 72 0 0 1 170 90" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="8.5" fill="#D4AA5A" letter-spacing="1.5">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">100% CARNE DE RES</textPath>
+  </text>
+</svg>

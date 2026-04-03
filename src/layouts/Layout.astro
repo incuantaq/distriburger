@@ -1,0 +1,143 @@
+---
+import content from '../data/content.json';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = content.site.title,
+  description = content.site.description,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --color-bg: #0d0a08;
+    --color-bg-section: #110d0a;
+    --color-gold: #c8943a;
+    --color-gold-light: #d4aa5a;
+    --color-orange: #e07830;
+    --color-white: #ffffff;
+    --color-text: #d4c8bc;
+    --color-text-muted: #9a8878;
+    --color-card-bg: rgba(255, 255, 255, 0.04);
+    --color-card-border: rgba(200, 148, 58, 0.2);
+    --font-main: 'Montserrat', system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-main);
+    background-color: var(--color-bg);
+    color: var(--color-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* Charcoal/carbon texture overlay — fixed so it covers the whole page */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    /* Base charcoal color */
+    background-color: #0e0b09;
+
+    /* Layer 1: fine grain noise (SVG feTurbulence) */
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.055 0 0 0 0 0.025 0 0 0 0 0.008 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23c)'/%3E%3C/svg%3E"),
+
+      /* Layer 2: coarser chunks — bigger charcoal pieces */
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.28' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.04 0 0 0 0 0.015 0 0 0 0 0.004 0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23b)'/%3E%3C/svg%3E"),
+
+      /* Layer 3: subtle warm ember glow pockets */
+      radial-gradient(ellipse 55% 40% at 15% 30%, rgba(180, 70, 10, 0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 50% at 85% 70%, rgba(160, 50, 5, 0.05) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 35% at 50% 90%, rgba(140, 40, 5, 0.04) 0%, transparent 70%);
+
+    background-size:
+      250px 250px,
+      400px 400px,
+      100% 100%,
+      100% 100%,
+      100% 100%;
+    background-repeat:
+      repeat,
+      repeat,
+      no-repeat,
+      no-repeat,
+      no-repeat;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, #c8943a 0%, #a0722a 100%);
+    color: #fff;
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    padding: 14px 32px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+    box-shadow: 0 4px 20px rgba(200, 148, 58, 0.35);
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+</style>

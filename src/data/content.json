@@ -1,0 +1,106 @@
+{
+  "site": {
+    "title": "DistriBurguer - 100% Carne de Res Premium",
+    "description": "Distribuidora de carne de hamburguesa artesanal premium para restaurantes y negocios gastronómicos.",
+    "logo": {
+      "text": "DistriBurguer",
+      "image": "/images/logo.png",
+      "alt": "DistriBurguer - Distribuidora de Carne de Hamburguesas"
+    }
+  },
+  "header": {
+    "cta": {
+      "text": "Cotizar ahora",
+      "href": "#contacto"
+    }
+  },
+  "hero": {
+    "badge": "100% CARNE DE RES",
+    "headline": "La mejor carne para hamburguesas de tu negocio",
+    "subheadline": "Producción artesanal premium con sabor auténtico y consistencia garantizada para restaurantes.",
+    "cta": {
+      "text": "Cotizar ahora",
+      "href": "#contacto"
+    },
+    "backgroundImage": "/images/hero-bg.jpg",
+    "logoImage": "/images/logo.png"
+  },
+  "features": {
+    "title": "¿Por qué elegir",
+    "titleHighlight": "Distriburguer",
+    "titleEnd": "?",
+    "items": [
+      {
+        "icon": "🔥",
+        "title": "Sabor auténtico",
+        "description": "Receta exclusiva que garantiza sabor real.",
+        "highlight": "sabor real"
+      },
+      {
+        "icon": "🥩",
+        "title": "100% carne de res",
+        "description": "Producto premium sin mezclas."
+      },
+      {
+        "icon": "🏭",
+        "title": "Producción confiable",
+        "description": "Capacidad de producción constante."
+      },
+      {
+        "icon": "🤝",
+        "title": "Aliado para restaurantes",
+        "description": "Pensado para negocios gastronómicos."
+      }
+    ]
+  },
+  "product": {
+    "title": "Carne de hamburguesa",
+    "titleHighlight": "premium",
+    "description": "En Distriburguer producimos carne de hamburguesa artesanal con una receta exclusiva que garantiza calidad, sabor y consistencia para restaurantes y negocios gastronómicos.",
+    "cta": {
+      "text": "Ver catálogo",
+      "href": "#catalogo"
+    },
+    "image": "/images/burger-patties.jpg",
+    "imageAlt": "Carne de hamburguesa premium DistriBurguer"
+  },
+  "stats": {
+    "headline": "Haz crecer tu negocio",
+    "headlineEnd": "con carne premium",
+    "items": [
+      {
+        "value": "3+",
+        "label": "años de experiencia"
+      },
+      {
+        "value": "45",
+        "label": "toneladas de producción mensual"
+      },
+      {
+        "value": "🇨🇴",
+        "label": "Cobertura nacional y regional",
+        "isIcon": true
+      }
+    ]
+  },
+  "contact": {
+    "id": "contacto",
+    "title": "¿Listo para cotizar?",
+    "description": "Contáctanos y recibe una cotización personalizada para tu negocio.",
+    "whatsapp": "+573000000000",
+    "email": "ventas@distriburguer.com",
+    "cta": {
+      "text": "Escribir por WhatsApp",
+      "href": "https://wa.me/573000000000"
+    }
+  },
+  "footer": {
+    "tagline": "Distribuidora de Carne de Hamburguesas",
+    "copyright": "© 2025 DistriBurguer. Todos los derechos reservados.",
+    "links": [
+      { "text": "Inicio", "href": "#" },
+      { "text": "Catálogo", "href": "#catalogo" },
+      { "text": "Contacto", "href": "#contacto" }
+    ]
+  }
+}

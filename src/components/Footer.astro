@@ -1,0 +1,128 @@
+---
+import content from '../data/content.json';
+
+const { footer, site } = content;
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <img
+        src={site.logo.image}
+        alt={site.logo.alt}
+        class="footer__logo"
+        width="48"
+        height="48"
+        loading="lazy"
+      />
+      <div>
+        <p class="footer__brand-name">{site.logo.text}<sup>®</sup></p>
+        <p class="footer__tagline">{footer.tagline}</p>
+      </div>
+    </div>
+
+    <nav class="footer__nav" aria-label="Footer navigation">
+      {footer.links.map((link) => (
+        <a href={link.href} class="footer__nav-link">{link.text}</a>
+      ))}
+    </nav>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container">
+      <p class="footer__copy">{footer.copyright}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: rgba(5, 3, 2, 0.75);
+    border-top: 1px solid rgba(200, 148, 58, 0.15);
+  }
+
+  .footer__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .footer__brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .footer__logo {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border-radius: 50%;
+    opacity: 0.85;
+  }
+
+  .footer__brand-name {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--color-white);
+    line-height: 1.2;
+  }
+
+  .footer__brand-name sup {
+    font-size: 0.55em;
+    color: var(--color-gold);
+  }
+
+  .footer__tagline {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+  }
+
+  .footer__nav {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .footer__nav-link {
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .footer__nav-link:hover {
+    color: var(--color-gold);
+  }
+
+  .footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 16px 0;
+  }
+
+  .footer__copy {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .footer__inner {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .footer__brand {
+      flex-direction: column;
+    }
+
+    .footer__nav {
+      justify-content: center;
+    }
+  }
+</style>

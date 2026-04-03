@@ -1,0 +1,137 @@
+---
+import content from '../data/content.json';
+
+const { hero } = content;
+---
+
+<section class="hero" style={`background-image: url('${hero.backgroundImage}')`}>
+  <div class="hero__overlay"></div>
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <p class="hero__eyebrow">{hero.badge}</p>
+      <h1 class="hero__headline">{hero.headline}</h1>
+      <p class="hero__sub">{hero.subheadline}</p>
+      <a href={hero.cta.href} class="btn-primary">{hero.cta.text}</a>
+    </div>
+
+    <div class="hero__logo-wrap">
+      <img
+        src={hero.logoImage}
+        alt="DistriBurguer logo"
+        class="hero__logo-badge"
+        width="320"
+        height="320"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    padding-top: 72px;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      rgba(5, 3, 2, 0.92) 0%,
+      rgba(15, 8, 4, 0.75) 50%,
+      rgba(30, 10, 5, 0.5) 100%
+    );
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding-top: 60px;
+    padding-bottom: 80px;
+  }
+
+  .hero__content {
+    flex: 1;
+    max-width: 520px;
+  }
+
+  .hero__eyebrow {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-white);
+    margin-bottom: 16px;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.7);
+    line-height: 1.1;
+  }
+
+  .hero__headline {
+    font-size: clamp(1.8rem, 4.5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-white);
+    margin-bottom: 20px;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+  }
+
+  .hero__sub {
+    font-size: 1rem;
+    color: var(--color-text);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 420px;
+  }
+
+  .hero__logo-wrap {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero__logo-badge {
+    width: clamp(220px, 28vw, 340px);
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 40px rgba(200, 148, 58, 0.25));
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  @media (max-width: 768px) {
+    .hero__inner {
+      flex-direction: column-reverse;
+      text-align: center;
+      padding-top: 40px;
+      padding-bottom: 60px;
+    }
+
+    .hero__content {
+      max-width: 100%;
+    }
+
+    .hero__sub {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero__logo-badge {
+      width: 200px;
+    }
+  }
+</style>
