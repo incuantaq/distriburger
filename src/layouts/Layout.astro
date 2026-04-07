@@ -64,43 +64,20 @@ const {
     color: var(--color-white);
     line-height: 1.6;
     overflow-x: hidden;
+    position: relative;
   }
 
-  /* Charcoal/carbon texture overlay — fixed so it covers the whole page */
   body::before {
     content: '';
-    position: fixed;
+    position: absolute;
     inset: 0;
+    top: 80vh;
     z-index: -1;
     pointer-events: none;
-
-    /* Base charcoal color */
-    background-color: #0e0b09;
-
-    /* Layer 1: fine grain noise (SVG feTurbulence) */
-    background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.055 0 0 0 0 0.025 0 0 0 0 0.008 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23c)'/%3E%3C/svg%3E"),
-
-      /* Layer 2: coarser chunks — bigger charcoal pieces */
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.28' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.04 0 0 0 0 0.015 0 0 0 0 0.004 0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23b)'/%3E%3C/svg%3E"),
-
-      /* Layer 3: subtle warm ember glow pockets */
-      radial-gradient(ellipse 55% 40% at 15% 30%, rgba(180, 70, 10, 0.06) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 50% at 85% 70%, rgba(160, 50, 5, 0.05) 0%, transparent 70%),
-      radial-gradient(ellipse 60% 35% at 50% 90%, rgba(140, 40, 5, 0.04) 0%, transparent 70%);
-
-    background-size:
-      250px 250px,
-      400px 400px,
-      100% 100%,
-      100% 100%,
-      100% 100%;
-    background-repeat:
-      repeat,
-      repeat,
-      no-repeat,
-      no-repeat,
-      no-repeat;
+    background-image: url('/images/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   img {

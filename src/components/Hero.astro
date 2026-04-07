@@ -8,7 +8,10 @@ const { hero } = content;
   <div class="hero__overlay"></div>
   <div class="container hero__inner">
     <div class="hero__content">
-      <p class="hero__eyebrow">{hero.badge}</p>
+      <p class="hero__eyebrow">
+        <span class="hero__eyebrow-pct">100%</span>
+        <span class="hero__eyebrow-sub">CARNE DE RES</span>
+      </p>
       <h1 class="hero__headline">{hero.headline}</h1>
       <p class="hero__sub">{hero.subheadline}</p>
       <a href={hero.cta.href} class="btn-primary">{hero.cta.text}</a>
@@ -66,14 +69,30 @@ const { hero } = content;
   }
 
   .hero__eyebrow {
-    font-size: clamp(1.6rem, 4vw, 2.4rem);
     font-weight: 900;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--color-white);
     margin-bottom: 16px;
-    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.7);
     line-height: 1.1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero__eyebrow-pct {
+    font-size: clamp(3.5rem, 9vw, 6rem);
+    background: linear-gradient(135deg, #f5d06a 0%, #c8943a 40%, #f0b429 70%, #a06820 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    filter: drop-shadow(0 2px 8px rgba(200, 148, 58, 0.5));
+    line-height: 1;
+  }
+
+  .hero__eyebrow-sub {
+    font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+    color: #c8943a;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.7);
   }
 
   .hero__headline {

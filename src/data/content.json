@@ -22,7 +22,7 @@
       "text": "Cotizar ahora",
       "href": "#contacto"
     },
-    "backgroundImage": "/images/hero-bg.jpg",
+    "backgroundImage": "/images/hero_bg.png",
     "logoImage": "/images/logo.png"
   },
   "features": {
@@ -32,22 +32,26 @@
     "items": [
       {
         "icon": "🔥",
+        "iconImage": "/images/fuego_icon.png",
         "title": "Sabor auténtico",
         "description": "Receta exclusiva que garantiza sabor real.",
         "highlight": "sabor real"
       },
       {
         "icon": "🥩",
+        "iconImage": "/images/carne_icon.png",
         "title": "100% carne de res",
         "description": "Producto premium sin mezclas."
       },
       {
         "icon": "🏭",
+        "iconImage": "/images/confiable_icon.png",
         "title": "Producción confiable",
         "description": "Capacidad de producción constante."
       },
       {
         "icon": "🤝",
+        "iconImage": "/images/aliados_icon.png",
         "title": "Aliado para restaurantes",
         "description": "Pensado para negocios gastronómicos."
       }
@@ -61,7 +65,7 @@
       "text": "Ver catálogo",
       "href": "#catalogo"
     },
-    "image": "/images/burger-patties.jpg",
+    "image": "/images/burger-patties.png",
     "imageAlt": "Carne de hamburguesa premium DistriBurguer"
   },
   "stats": {
@@ -78,6 +82,7 @@
       },
       {
         "value": "🇨🇴",
+        "iconImage": "/images/map_icon.png",
         "label": "Cobertura nacional y regional",
         "isIcon": true
       }

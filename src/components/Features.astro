@@ -14,7 +14,9 @@ const { features } = content;
     <div class="features__grid">
       {features.items.map((item) => (
         <div class="feature-card">
-          <div class="feature-card__icon">{item.icon}</div>
+          <div class="feature-card__icon">
+            <img src={item.iconImage} alt={item.title} width="32" height="32" />
+          </div>
           <div class="feature-card__body">
             <h3 class="feature-card__title">{item.title}</h3>
             <p class="feature-card__desc">{item.description}</p>
@@ -27,7 +29,6 @@ const { features } = content;
 
 <style>
   .features {
-    background: rgba(10, 7, 5, 0.55);
     padding: 90px 0;
   }
 
@@ -40,7 +41,9 @@ const { features } = content;
   }
 
   .features__title-highlight {
-    color: var(--color-orange);
+    background: linear-gradient(135deg, #f5d06a 0%, #c8943a 40%, #f0b429 70%, #a06820 100%);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .features__grid {
@@ -68,15 +71,12 @@ const { features } = content;
   }
 
   .feature-card__icon {
-    font-size: 2rem;
-    flex-shrink: 0;
-    width: 52px;
-    height: 52px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(200, 148, 58, 0.1);
-    border-radius: 10px;
+    width: 60px;
+  }
+
+  .feature-card__icon img {
+    width: 100%;
+    height: auto;
   }
 
   .feature-card__title {

@@ -11,12 +11,11 @@ const { footer, site } = content;
         src={site.logo.image}
         alt={site.logo.alt}
         class="footer__logo"
-        width="48"
-        height="48"
+        width="200"
+        height="200"
         loading="lazy"
       />
       <div>
-        <p class="footer__brand-name">{site.logo.text}<sup>®</sup></p>
         <p class="footer__tagline">{footer.tagline}</p>
       </div>
     </div>
@@ -58,8 +57,8 @@ const { footer, site } = content;
   }
 
   .footer__logo {
-    width: 44px;
-    height: 44px;
+    width: 200px;
+    height: 200px;
     object-fit: contain;
     border-radius: 50%;
     opacity: 0.85;
