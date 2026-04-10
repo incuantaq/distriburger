@@ -6,7 +6,7 @@ const { header, site } = content;
 
 <header class="header">
   <div class="container header__inner">
-    <a href="#" class="header__logo" aria-label={site.logo.alt}>
+    <a href="/" class="header__logo" aria-label={site.logo.alt}>
       <img
         src={site.logo.image}
         alt={site.logo.alt}
@@ -15,6 +15,11 @@ const { header, site } = content;
         height="64"
       />
     </a>
+
+    <nav class="header__nav" aria-label="Navegación principal">
+      <a href="/" class="header__nav-link">Inicio</a>
+      <a href="/catalogo" class="header__nav-link">Catálogo</a>
+    </nav>
 
     <a href={header.cta.href} class="btn-primary header__cta">
       {header.cta.text}
@@ -62,14 +67,46 @@ const { header, site } = content;
     letter-spacing: 0.02em;
   }
 
+  .header__nav {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .header__nav-link {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .header__nav-link:hover {
+    color: var(--color-gold);
+  }
+
   .header__cta {
     font-size: 0.88rem;
     padding: 10px 24px;
   }
 
-  @media (max-width: 480px) {
-    .header__logo-text {
-      font-size: 1rem;
+  @media (max-width: 600px) {
+    .header__nav {
+      gap: 18px;
+    }
+
+    .header__nav-link {
+      font-size: 0.82rem;
+    }
+
+    .header__cta {
+      display: none;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .header__nav {
+      display: none;
     }
   }
 </style>

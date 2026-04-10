@@ -1,0 +1,517 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import content from '../data/content.json';
+
+const { contact, site } = content;
+
+const presentaciones = [
+  { peso: '2550 g', porciones: 30 },
+  { peso: '3000 g', porciones: 30 },
+  { peso: '3450 g', porciones: 30 },
+  { peso: '3500 g', porciones: 28 },
+  { peso: '3450 g', porciones: 23 },
+  { peso: '3600 g', porciones: 36 },
+];
+
+const fotos = [
+  { thumb: '/images/productos/distri-thumb.webp',     full: '/images/productos/distri.webp' },
+  { thumb: '/images/productos/distri-2-thumb.webp',   full: '/images/productos/distri-2.webp' },
+  { thumb: '/images/productos/distri-3-thumb.webp',   full: '/images/productos/distri-3.webp' },
+  { thumb: '/images/productos/distri-4-thumb.webp',   full: '/images/productos/distri-4.webp' },
+  { thumb: '/images/productos/distri-5-thumb.webp',   full: '/images/productos/distri-5.webp' },
+  { thumb: '/images/productos/distri-6-thumb.webp',   full: '/images/productos/distri-6.webp' },
+  { thumb: '/images/productos/distri-7-thumb.webp',   full: '/images/productos/distri-7.webp' },
+  { thumb: '/images/productos/distri-8-thumb.webp',   full: '/images/productos/distri-8.webp' },
+  { thumb: '/images/productos/distri-9-thumb.webp',   full: '/images/productos/distri-9.webp' },
+  { thumb: '/images/productos/distri-10-thumb.webp',  full: '/images/productos/distri-10.webp' },
+  { thumb: '/images/productos/distri-11-thumb.webp',  full: '/images/productos/distri-11.webp' },
+  { thumb: '/images/productos/distri-12-thumb.webp',  full: '/images/productos/distri-12.webp' },
+  { thumb: '/images/productos/distri-13-thumb.webp',  full: '/images/productos/distri-13.webp' },
+  { thumb: '/images/productos/distri-14-thumb.webp',  full: '/images/productos/distri-14.webp' },
+  { thumb: '/images/productos/distri-15-thumb.webp',  full: '/images/productos/distri-15.webp' },
+  { thumb: '/images/productos/distri-16-thumb.webp',  full: '/images/productos/distri-16.webp' },
+  { thumb: '/images/productos/distri-17-thumb.webp',  full: '/images/productos/distri-17.webp' },
+  { thumb: '/images/productos/distri-2-2-thumb.webp', full: '/images/productos/distri-2-2.webp' },
+  { thumb: '/images/productos/distri-2-3-thumb.webp', full: '/images/productos/distri-2-3.webp' },
+  { thumb: '/images/productos/distri-3-2-thumb.webp', full: '/images/productos/distri-3-2.webp' },
+  { thumb: '/images/productos/distri-3-3-thumb.webp', full: '/images/productos/distri-3-3.webp' },
+  { thumb: '/images/productos/distri-4-2-thumb.webp', full: '/images/productos/distri-4-2.webp' },
+  { thumb: '/images/productos/distri-4-3-thumb.webp', full: '/images/productos/distri-4-3.webp' },
+  { thumb: '/images/productos/distri-5-2-thumb.webp', full: '/images/productos/distri-5-2.webp' },
+];
+
+const whatsappUrl = `https://wa.me/${contact.whatsapp.replace(/\+/g, '').replace(/\s/g, '')}?text=${encodeURIComponent('Hola, me interesa cotizar carne de hamburguesa DistriBurguer.')}`;
+---
+
+<Layout title={`Catálogo de Productos — ${site.title}`} description="Catálogo de presentaciones de carne de hamburguesa artesanal premium DistriBurguer.">
+  <Header />
+  <main class="catalogo">
+
+    <!-- Hero -->
+    <section class="cat-hero">
+      <div class="container cat-hero__inner">
+        <p class="cat-hero__badge">100% CARNE DE RES</p>
+        <h1 class="cat-hero__title">
+          Catálogo de <span class="gold">productos</span>
+        </h1>
+        <p class="cat-hero__sub">
+          Selecciona la presentación ideal para tu negocio y cotiza directo por WhatsApp.
+        </p>
+      </div>
+    </section>
+
+    <!-- Presentaciones -->
+    <section class="presentaciones">
+      <div class="container">
+        <h2 class="section-title">Presentaciones <span class="gold">disponibles</span></h2>
+        <p class="section-sub">Peso neto por empaque</p>
+        <div class="pres-grid">
+          {presentaciones.map((p) => (
+            <div class="pres-card">
+              <div class="pres-card__peso">{p.peso}</div>
+              <div class="pres-card__porciones">
+                <span class="pres-card__num">{p.porciones}</span>
+                <span class="pres-card__label">porciones por empaque</span>
+              </div>
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="pres-card__cta"
+              >
+                Cotizar esta presentación
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Galería -->
+    <section class="galeria">
+      <div class="container">
+        <h2 class="section-title">Galería de <span class="gold">producto</span></h2>
+        <p class="section-sub">Haz clic en cualquier imagen para ampliarla</p>
+        <div class="galeria__grid">
+          {fotos.map((foto, i) => (
+            <button class="galeria__item" data-src={foto.full} data-index={i} aria-label={`Ver foto ${i + 1}`}>
+              <img
+                src={foto.thumb}
+                alt={`Carne de hamburguesa DistriBurguer - foto ${i + 1}`}
+                loading="lazy"
+                decoding="async"
+                width="600"
+                height="450"
+              />
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA final -->
+    <section class="cat-cta">
+      <div class="container cat-cta__inner">
+        <h2 class="cat-cta__title">¿Listo para <span class="gold">cotizar?</span></h2>
+        <p class="cat-cta__sub">Escríbenos y recibe una propuesta personalizada para tu negocio.</p>
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-wa btn-wa--large"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Cotizar por WhatsApp
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de imagen">
+  <button class="lightbox__close" id="lb-close" aria-label="Cerrar">&times;</button>
+  <button class="lightbox__prev" id="lb-prev" aria-label="Anterior">&#8249;</button>
+  <button class="lightbox__next" id="lb-next" aria-label="Siguiente">&#8250;</button>
+  <div class="lightbox__content">
+    <div class="lightbox__spinner" id="lb-spinner" hidden></div>
+    <img src="" alt="" id="lb-img" class="lightbox__img" style="transition: opacity 0.25s;" />
+  </div>
+</div>
+
+<style>
+  /* ── Layout ── */
+  .catalogo {
+    padding-top: 72px; /* height of fixed header */
+  }
+
+  .gold { color: var(--color-gold); }
+
+  .section-title {
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 800;
+    color: var(--color-white);
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .section-sub {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  /* ── Hero ── */
+  .cat-hero {
+    padding: 80px 0 60px;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(200,148,58,0.06) 0%, transparent 100%);
+    border-bottom: 1px solid rgba(200,148,58,0.12);
+  }
+
+  .cat-hero__badge {
+    display: inline-block;
+    background: rgba(200,148,58,0.12);
+    border: 1px solid rgba(200,148,58,0.4);
+    color: var(--color-gold);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  .cat-hero__title {
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 900;
+    color: var(--color-white);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .cat-hero__sub {
+    font-size: 1rem;
+    color: var(--color-text);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* ── Presentaciones ── */
+  .presentaciones {
+    padding: 80px 0;
+  }
+
+  .pres-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .pres-card {
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    border-radius: 12px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .pres-card:hover {
+    border-color: rgba(200,148,58,0.5);
+    transform: translateY(-3px);
+  }
+
+  .pres-card__peso {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--color-gold);
+  }
+
+  .pres-card__porciones {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .pres-card__num {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--color-white);
+    line-height: 1;
+  }
+
+  .pres-card__label {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .pres-card__cta {
+    display: inline-block;
+    margin-top: auto;
+    padding-top: 16px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    border-top: 1px solid rgba(200,148,58,0.2);
+    transition: color 0.2s;
+  }
+
+  .pres-card__cta:hover { color: var(--color-gold-light); }
+
+  /* ── Galería ── */
+  .galeria {
+    padding: 80px 0;
+    background: rgba(255,255,255,0.02);
+    border-top: 1px solid rgba(200,148,58,0.08);
+    border-bottom: 1px solid rgba(200,148,58,0.08);
+  }
+
+  .galeria__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .galeria__item {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    position: relative;
+    border: 1px solid rgba(200,148,58,0.12);
+    transition: border-color 0.2s, transform 0.2s;
+    /* Skeleton mientras carga */
+    background: linear-gradient(110deg, #1a1410 30%, #221a12 50%, #1a1410 70%);
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.4s infinite;
+  }
+
+  @keyframes skeleton-shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  .galeria__item.loaded {
+    background: none;
+    animation: none;
+  }
+
+  .galeria__item:hover {
+    border-color: rgba(200,148,58,0.5);
+    transform: scale(1.02);
+  }
+
+  .galeria__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .galeria__item.loaded img {
+    opacity: 1;
+  }
+
+  .galeria__item:hover img { opacity: 0.9; }
+
+  /* ── CTA final ── */
+  .cat-cta {
+    padding: 100px 0;
+    text-align: center;
+  }
+
+  .cat-cta__title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900;
+    color: var(--color-white);
+    margin-bottom: 12px;
+  }
+
+  .cat-cta__sub {
+    font-size: 1rem;
+    color: var(--color-text);
+    margin-bottom: 36px;
+  }
+
+  /* ── Botón WhatsApp ── */
+  .btn-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366;
+    color: #fff;
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 14px 32px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+    box-shadow: 0 4px 24px rgba(37,211,102,0.3);
+  }
+
+  .btn-wa:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+
+  .btn-wa--large {
+    font-size: 1.05rem;
+    padding: 16px 40px;
+  }
+
+  /* ── Lightbox ── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,0.92);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox.is-open { display: flex; }
+
+  .lightbox__content {
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox__img {
+    max-width: 90vw;
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 8px 60px rgba(0,0,0,0.8);
+  }
+
+  .lightbox__close,
+  .lightbox__prev,
+  .lightbox__next {
+    position: absolute;
+    background: rgba(200,148,58,0.15);
+    border: 1px solid rgba(200,148,58,0.3);
+    color: var(--color-white);
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.2s;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox__close:hover,
+  .lightbox__prev:hover,
+  .lightbox__next:hover {
+    background: rgba(200,148,58,0.3);
+  }
+
+  .lightbox__close { top: 20px; right: 20px; font-size: 1.4rem; }
+  .lightbox__prev  { left: 20px; top: 50%; transform: translateY(-50%); }
+  .lightbox__next  { right: 20px; top: 50%; transform: translateY(-50%); }
+
+  .lightbox__spinner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(200,148,58,0.2);
+    border-top-color: var(--color-gold);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  @media (max-width: 600px) {
+    .pres-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .galeria__grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+    .lightbox__prev { left: 8px; }
+    .lightbox__next { right: 8px; }
+  }
+</style>
+
+<script>
+  const items = Array.from(document.querySelectorAll<HTMLButtonElement>('.galeria__item'));
+  const fullSrcs: string[] = items.map(btn => btn.dataset.src ?? '');
+  let current = 0;
+
+  // Marcar cada imagen como cargada para quitar el skeleton
+  items.forEach(btn => {
+    const img = btn.querySelector('img')!;
+    const markLoaded = () => btn.classList.add('loaded');
+    if (img.complete) markLoaded();
+    else img.addEventListener('load', markLoaded);
+  });
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox')!;
+  const lbImg    = document.getElementById('lb-img') as HTMLImageElement;
+  const lbClose  = document.getElementById('lb-close')!;
+  const lbPrev   = document.getElementById('lb-prev')!;
+  const lbNext   = document.getElementById('lb-next')!;
+  const lbSpin   = document.getElementById('lb-spinner')!;
+
+  function openAt(index: number) {
+    current = (index + fullSrcs.length) % fullSrcs.length;
+    lbImg.style.opacity = '0';
+    lbSpin.hidden = false;
+    lbImg.src = fullSrcs[current];
+    lbImg.alt = `Foto ${current + 1}`;
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  lbImg.addEventListener('load', () => {
+    lbSpin.hidden = true;
+    lbImg.style.opacity = '1';
+  });
+
+  function close() {
+    lightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  items.forEach(btn => {
+    btn.addEventListener('click', () => {
+      openAt(parseInt(btn.dataset.index ?? '0', 10));
+    });
+  });
+
+  lbClose.addEventListener('click', close);
+  lbPrev.addEventListener('click', () => openAt(current - 1));
+  lbNext.addEventListener('click', () => openAt(current + 1));
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) close(); });
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape')     close();
+    if (e.key === 'ArrowLeft')  openAt(current - 1);
+    if (e.key === 'ArrowRight') openAt(current + 1);
+  });
+</script>
