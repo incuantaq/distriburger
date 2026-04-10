@@ -63,7 +63,7 @@
     "description": "En Distriburguer producimos carne de hamburguesa artesanal con una receta exclusiva que garantiza calidad, sabor y consistencia para restaurantes y negocios gastronómicos.",
     "cta": {
       "text": "Ver catálogo",
-      "href": "#catalogo"
+      "href": "/catalogo"
     },
     "image": "/images/burger-patties.png",
     "imageAlt": "Carne de hamburguesa premium DistriBurguer"
@@ -104,7 +104,7 @@
     "copyright": "© 2025 DistriBurguer. Todos los derechos reservados.",
     "links": [
       { "text": "Inicio", "href": "#" },
-      { "text": "Catálogo", "href": "#catalogo" },
+      { "text": "Catálogo", "href": "/catalogo" },
       { "text": "Contacto", "href": "#contacto" }
     ]
   }
