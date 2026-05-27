@@ -43,9 +43,6 @@ const fotos: Foto[] = [
   cldFoto('distri-15', 'produccion'),
   cldFoto('distri-16', 'produccion'),
   cldFoto('distri-17', 'produccion'),
-  cldFoto('distri', 'hamburguesa'),
-  cldFoto('distri-2', 'hamburguesa'),
-  cldFoto('distri-3', 'hamburguesa'),
 ];
 ---
 
@@ -139,20 +136,6 @@ const fotos: Foto[] = [
       <div class="container">
         <h2 class="section-title">Galería de <span class="gold">producto</span></h2>
         <p class="section-sub">Haz clic en cualquier imagen para ampliarla</p>
-
-        <!-- Filtros de galería -->
-        <div class="galeria__filtros" role="group" aria-label="Filtrar galería">
-          <button class="galeria__filtro galeria__filtro--active" data-cat="todas">Todas</button>
-          <button class="galeria__filtro" data-cat="produccion">Producción</button>
-          <button class="galeria__filtro" data-cat="hamburguesa">
-            Hamburguesa preparada
-            <span class="galeria__filtro-note" title="Solo vendemos la carne, no hamburguesas preparadas">*</span>
-          </button>
-        </div>
-
-        <p class="galeria__nota" id="galeria-nota-hamburguesa" hidden>
-          * Las fotografías de hamburguesa preparada son referencias de uso. DistriBurguer comercializa únicamente la carne, no hamburguesas listas.
-        </p>
 
         <div class="galeria__grid">
           {fotos.map((foto, i) => (
@@ -414,60 +397,6 @@ const fotos: Foto[] = [
     border-bottom: 1px solid rgba(200,148,58,0.08);
   }
 
-  .galeria__filtros {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 16px;
-  }
-
-  .galeria__filtro {
-    background: var(--color-card-bg);
-    border: 1px solid var(--color-card-border);
-    color: var(--color-text);
-    font-family: var(--font-main);
-    font-size: 0.88rem;
-    font-weight: 600;
-    padding: 8px 20px;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: border-color 0.2s, color 0.2s, background 0.2s;
-  }
-
-  .galeria__filtro:hover {
-    border-color: rgba(200,148,58,0.4);
-    color: var(--color-white);
-  }
-
-  .galeria__filtro--active {
-    background: rgba(200,148,58,0.12);
-    border-color: rgba(200,148,58,0.6);
-    color: var(--color-gold);
-  }
-
-  .galeria__filtro-note {
-    color: var(--color-gold);
-    font-size: 0.95rem;
-    margin-left: 2px;
-    cursor: help;
-  }
-
-  .galeria__nota {
-    font-size: 0.82rem;
-    color: var(--color-text-muted);
-    text-align: center;
-    margin-bottom: 28px;
-    font-style: italic;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px solid rgba(200,148,58,0.15);
-    border-radius: 8px;
-    padding: 10px 16px;
-    background: rgba(200,148,58,0.04);
-  }
-
   .galeria__grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -488,10 +417,6 @@ const fotos: Foto[] = [
     background: linear-gradient(110deg, #1a1410 30%, #221a12 50%, #1a1410 70%);
     background-size: 200% 100%;
     animation: skeleton-shimmer 1.4s infinite;
-  }
-
-  .galeria__item.hidden-item {
-    display: none;
   }
 
   @keyframes skeleton-shimmer {
@@ -649,40 +574,9 @@ const fotos: Foto[] = [
     });
   });
 
-  /* ── Filtros de galería ── */
-  const filtros  = document.querySelectorAll<HTMLButtonElement>('.galeria__filtro');
-  const galeriaItems = Array.from(document.querySelectorAll<HTMLButtonElement>('.galeria__item'));
-  const notaHamburguesa = document.getElementById('galeria-nota-hamburguesa')!;
-
-  filtros.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filtros.forEach(f => f.classList.remove('galeria__filtro--active'));
-      btn.classList.add('galeria__filtro--active');
-
-      const cat = btn.dataset.cat!;
-
-      galeriaItems.forEach(item => {
-        const itemCat = item.dataset.cat!;
-        const visible = cat === 'todas' || itemCat === cat;
-        item.classList.toggle('hidden-item', !visible);
-      });
-
-      notaHamburguesa.hidden = cat !== 'hamburguesa';
-
-      // Rebuild visible list for lightbox navigation
-      updateVisibleItems();
-    });
-  });
-
   /* ── Lightbox ── */
-  let visibleItems: HTMLButtonElement[] = [];
+  const galeriaItems = Array.from(document.querySelectorAll<HTMLButtonElement>('.galeria__item'));
   let current = 0;
-
-  function updateVisibleItems() {
-    visibleItems = galeriaItems.filter(btn => !btn.classList.contains('hidden-item'));
-  }
-
-  updateVisibleItems();
 
   // Marcar imágenes como cargadas para quitar el skeleton
   galeriaItems.forEach(btn => {
@@ -700,10 +594,10 @@ const fotos: Foto[] = [
   const lbSpin   = document.getElementById('lb-spinner')!;
 
   function openAt(index: number) {
-    current = (index + visibleItems.length) % visibleItems.length;
+    current = (index + galeriaItems.length) % galeriaItems.length;
     lbImg.style.opacity = '0';
     lbSpin.hidden = false;
-    lbImg.src = visibleItems[current].dataset.src ?? '';
+    lbImg.src = galeriaItems[current].dataset.src ?? '';
     lbImg.alt = `Foto ${current + 1}`;
     lightbox.classList.add('is-open');
     document.body.style.overflow = 'hidden';
@@ -724,11 +618,8 @@ const fotos: Foto[] = [
     document.body.style.overflow = '';
   }
 
-  galeriaItems.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const visibleIndex = visibleItems.indexOf(btn);
-      if (visibleIndex !== -1) openAt(visibleIndex);
-    });
+  galeriaItems.forEach((btn, i) => {
+    btn.addEventListener('click', () => openAt(i));
   });
 
   lbClose.addEventListener('click', close);
