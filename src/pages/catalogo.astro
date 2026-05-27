@@ -23,7 +23,7 @@ function cldFoto(nombre: string, categoria: 'produccion' | 'hamburguesa'): Foto 
   const publicId = `${nombre}.jpg`;
   return {
     thumb: getCldImageUrl({ src: publicId, width: 600, height: 450, crop: { type: 'fill', source: true }, format: 'auto', quality: 'auto' }),
-    full:  getCldImageUrl({ src: publicId, format: 'auto', quality: 'auto' }),
+    full:  getCldImageUrl({ src: publicId, width: 1600, format: 'auto', quality: 'auto' }),
     categoria,
   };
 }
@@ -712,6 +712,11 @@ const fotos: Foto[] = [
   lbImg.addEventListener('load', () => {
     lbSpin.hidden = true;
     lbImg.style.opacity = '1';
+  });
+
+  lbImg.addEventListener('error', () => {
+    lbSpin.hidden = true;
+    lbImg.style.opacity = '0.3';
   });
 
   function close() {
