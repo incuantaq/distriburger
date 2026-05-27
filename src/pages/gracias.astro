@@ -1,0 +1,116 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import content from '../data/content.json';
+
+const { site } = content;
+---
+
+<Layout title={`¡Gracias! — ${site.title}`} description="Recibimos tu información. Pronto nos comunicaremos contigo.">
+  <Header />
+  <main class="gracias">
+    <div class="container gracias__inner">
+
+      <div class="gracias__icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+
+      <p class="gracias__badge">MENSAJE RECIBIDO</p>
+      <h1 class="gracias__title">¡Gracias por <span class="gold">contactarnos!</span></h1>
+      <p class="gracias__text">
+        Recibimos tu información. Un asesor de DistriBurguer se comunicará contigo muy pronto con una propuesta personalizada para tu negocio.
+      </p>
+
+      <div class="gracias__actions">
+        <a href="/" class="btn-primary">Volver al inicio</a>
+        <a href="/catalogo" class="gracias__link">Ver catálogo de productos</a>
+      </div>
+
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .gracias {
+    min-height: calc(100vh - 72px);
+    padding-top: 72px;
+    display: flex;
+    align-items: center;
+  }
+
+  .gracias__inner {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 80px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .gracias__icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(200,148,58,0.1);
+    border: 2px solid rgba(200,148,58,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gold);
+    margin-bottom: 8px;
+  }
+
+  .gracias__badge {
+    display: inline-block;
+    background: rgba(200,148,58,0.12);
+    border: 1px solid rgba(200,148,58,0.4);
+    color: var(--color-gold);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    padding: 5px 14px;
+    border-radius: 20px;
+  }
+
+  .gracias__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    color: var(--color-white);
+    line-height: 1.15;
+  }
+
+  .gold { color: var(--color-gold); }
+
+  .gracias__text {
+    font-size: 1.05rem;
+    color: var(--color-text);
+    line-height: 1.75;
+    max-width: 460px;
+  }
+
+  .gracias__actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .gracias__link {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-gold);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+  }
+
+  .gracias__link:hover { color: var(--color-gold-light); }
+</style>

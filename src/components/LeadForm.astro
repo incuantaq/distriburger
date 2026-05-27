@@ -1,0 +1,199 @@
+---
+const tiposNegocio = [
+  'Restaurante',
+  'Hamburguesería',
+  'Food truck',
+  'Dark kitchen',
+  'Distribuidora',
+  'Supermercado / tienda',
+  'Catering',
+  'Otro',
+];
+
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzpAC13BnlSuWOiEdFI3AhReDQKw_7AuHV-nRTf1wCJSWF8LHB7rzSr6apwAcEPW0Hp/exec';
+---
+
+<form class="lead-form" novalidate>
+  <div class="lf-row">
+    <div class="lf-group">
+      <label class="lf-label">Nombre <span class="lf-req">*</span></label>
+      <input type="text" name="nombre" class="lf-input" placeholder="Tu nombre completo" required autocomplete="name" />
+    </div>
+    <div class="lf-group">
+      <label class="lf-label">Número de WhatsApp <span class="lf-req">*</span></label>
+      <input type="tel" name="numero" class="lf-input" placeholder="3001234567" required autocomplete="tel" />
+    </div>
+  </div>
+
+  <div class="lf-row">
+    <div class="lf-group">
+      <label class="lf-label">Correo electrónico <span class="lf-req">*</span></label>
+      <input type="email" name="correo" class="lf-input" placeholder="correo@ejemplo.com" required autocomplete="email" />
+    </div>
+    <div class="lf-group">
+      <label class="lf-label">Ciudad <span class="lf-req">*</span></label>
+      <input type="text" name="ciudad" class="lf-input" placeholder="Bogotá, Medellín..." required autocomplete="address-level2" />
+    </div>
+  </div>
+
+  <div class="lf-group">
+    <label class="lf-label">Tipo de negocio <span class="lf-req">*</span></label>
+    <select name="negocio" class="lf-input lf-select" required>
+      <option value="">Selecciona una opción</option>
+      {tiposNegocio.map(t => <option value={t}>{t}</option>)}
+    </select>
+  </div>
+
+  <button type="submit" class="lf-submit">
+    <span class="lf-submit__text">Enviar información</span>
+    <span class="lf-submit__loading" hidden>Enviando...</span>
+  </button>
+
+  <p class="lf-privacy">Tus datos son confidenciales y solo se usarán para contactarte.</p>
+</form>
+
+<style>
+  .lead-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .lf-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .lf-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .lf-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-white);
+    letter-spacing: 0.02em;
+  }
+
+  .lf-req { color: var(--color-gold); }
+
+  .lf-input {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--color-card-border);
+    border-radius: 8px;
+    color: var(--color-white);
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    padding: 12px 16px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .lf-input::placeholder { color: var(--color-text-muted); opacity: 0.7; }
+
+  .lf-input:focus {
+    border-color: rgba(200,148,58,0.6);
+    background: rgba(200,148,58,0.04);
+  }
+
+  .lf-input.lf-error { border-color: rgba(220, 80, 60, 0.6); }
+
+  .lf-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c8943a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+
+  .lf-select option {
+    background: #1a1410;
+    color: var(--color-white);
+  }
+
+  .lf-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #c8943a 0%, #a0722a 100%);
+    color: #fff;
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 15px 32px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+    box-shadow: 0 4px 20px rgba(200,148,58,0.35);
+    margin-top: 4px;
+  }
+
+  .lf-submit:hover { opacity: 0.9; transform: translateY(-2px); }
+  .lf-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  .lf-privacy {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 640px) {
+    .lf-row { grid-template-columns: 1fr; gap: 16px; }
+  }
+</style>
+
+<script define:vars={{ sheetsUrl: SHEETS_URL }}>
+  document.querySelectorAll('.lead-form').forEach(form => {
+    const submitBtn  = form.querySelector('.lf-submit');
+    const btnText    = form.querySelector('.lf-submit__text');
+    const btnLoading = form.querySelector('.lf-submit__loading');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const inputs = form.querySelectorAll('[required]');
+      let valid = true;
+
+      inputs.forEach(input => {
+        input.classList.remove('lf-error');
+        if (!input.value.trim()) {
+          input.classList.add('lf-error');
+          valid = false;
+        }
+      });
+
+      if (!valid) return;
+
+      submitBtn.disabled = true;
+      btnText.hidden = true;
+      btnLoading.hidden = false;
+
+      const data = {
+        nombre:  form.querySelector('[name="nombre"]').value.trim(),
+        numero:  form.querySelector('[name="numero"]').value.trim(),
+        correo:  form.querySelector('[name="correo"]').value.trim(),
+        ciudad:  form.querySelector('[name="ciudad"]').value.trim(),
+        negocio: form.querySelector('[name="negocio"]').value.trim(),
+      };
+
+      try {
+        await fetch(sheetsUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify(data),
+        });
+      } catch (_) {}
+
+      window.location.href = '/gracias';
+    });
+  });
+</script>
