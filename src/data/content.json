@@ -92,11 +92,11 @@
     "id": "contacto",
     "title": "¿Listo para cotizar?",
     "description": "Contáctanos y recibe una cotización personalizada para tu negocio.",
-    "whatsapp": "+573000000000",
+    "whatsapp": "+573183461836",
     "email": "ventas@distriburguer.com",
     "cta": {
       "text": "Escribir por WhatsApp",
-      "href": "https://wa.me/573000000000"
+      "href": "https://wa.me/573183461836"
     }
   },
   "footer": {
@@ -106,6 +106,10 @@
       { "text": "Inicio", "href": "#" },
       { "text": "Catálogo", "href": "/catalogo" },
       { "text": "Contacto", "href": "#contacto" }
-    ]
+    ],
+    "instagram": {
+      "text": "@distriburguer_",
+      "href": "https://www.instagram.com/distriburguer_"
+    }
   }
 }
