@@ -107,6 +107,10 @@
       { "text": "Catálogo", "href": "/catalogo" },
       { "text": "Contacto", "href": "#contacto" }
     ],
+    "privacy": {
+      "text": "Política de privacidad",
+      "href": "/politica-privacidad"
+    },
     "instagram": {
       "text": "@distriburguer_",
       "href": "https://www.instagram.com/distriburguer_"

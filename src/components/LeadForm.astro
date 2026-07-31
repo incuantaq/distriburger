@@ -47,7 +47,10 @@ const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzpAC13BnlSuWOiEdFI3
     <span class="lf-submit__loading" hidden>Enviando...</span>
   </button>
 
-  <p class="lf-privacy">Tus datos son confidenciales y solo se usarán para contactarte.</p>
+  <p class="lf-privacy">
+    Tus datos son confidenciales y solo se usarán para contactarte.
+    <a href="/politica-privacidad" class="lf-privacy__link">Ver política de privacidad</a>.
+  </p>
 </form>
 
 <style>
@@ -142,6 +145,15 @@ const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzpAC13BnlSuWOiEdFI3
     text-align: center;
     line-height: 1.5;
   }
+
+  .lf-privacy__link {
+    color: var(--color-gold);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+  }
+
+  .lf-privacy__link:hover { color: var(--color-gold-light); }
 
   @media (max-width: 640px) {
     .lf-row { grid-template-columns: 1fr; gap: 16px; }

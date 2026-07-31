@@ -1,7 +1,9 @@
 ---
 import content from '../data/content.json';
+import { resolveHref } from '../utils/resolveHref';
 
 const { header, site } = content;
+const ctaHref = resolveHref(header.cta.href, Astro.url.pathname);
 ---
 
 <header class="header">
@@ -21,7 +23,7 @@ const { header, site } = content;
       <a href="/catalogo" class="header__nav-link">Catálogo</a>
     </nav>
 
-    <a href={header.cta.href} class="btn-primary header__cta">
+    <a href={ctaHref} class="btn-primary header__cta">
       {header.cta.text}
     </a>
   </div>
