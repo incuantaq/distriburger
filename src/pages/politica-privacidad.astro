@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import content from '../data/content.json';
+
+const { site } = content;
+---
+
+<Layout
+  title={`Política de Privacidad — ${site.title}`}
+  description="Conoce cómo DistriBurguer recopila, usa y protege tus datos personales."
+>
+  <Header />
+  <main class="legal">
+    <div class="container legal__inner">
+      <h1 class="legal__title">Política de <span class="gold">Privacidad</span></h1>
+
+      <div class="legal__content">
+        <p>
+          Autorizo de manera libre, previa, expresa e informada a la empresa para recolectar, almacenar y utilizar mis datos personales con el fin de gestionar procesos comerciales, comunicación, envío de información y ejecución de campañas publicitarias y de pauta digital.
+        </p>
+        <p>
+          Asímismo, autorizo el uso de la información suministrada para la segmentación, análisis y optimización de estrategias de marketing y publicidad en plataformas digitales, de acuerdo con la normativa vigente de protección de datos personales.
+        </p>
+        <p>
+          Declaro que conozco que puedo ejercer mis derechos de acceso, actualización, rectificación y eliminación de mis datos cuando lo considere necesario.
+        </p>
+      </div>
+
+      <div class="legal__actions">
+        <a href="/" class="btn-primary">Volver al inicio</a>
+        <a href="/#contacto" class="legal__link">Contactar</a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .legal {
+    min-height: calc(100vh - 72px);
+    padding-top: 72px;
+    padding-bottom: 80px;
+  }
+
+  .legal__inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+
+  .legal__title {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 900;
+    color: var(--color-white);
+    line-height: 1.15;
+  }
+
+  .gold { color: var(--color-gold); }
+
+  .legal__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .legal__content p {
+    font-size: 0.95rem;
+    color: var(--color-text);
+    line-height: 1.75;
+  }
+
+  .legal__actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 48px;
+    flex-wrap: wrap;
+  }
+
+  .legal__link {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-gold);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+  }
+
+  .legal__link:hover { color: var(--color-gold-light); }
+</style>
